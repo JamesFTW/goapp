@@ -95,7 +95,7 @@ func TestStaticFileServer(t *testing.T) {
   r := newRouter()
   mockServer := httptest.NewServer(r)
 
-  resp, err := http.Get(mockServer.URL + "/assests/")
+  resp, err := http.Get(mockServer.URL + "/assets/")
 
   if err != nil {
     t.Fatal(err)
