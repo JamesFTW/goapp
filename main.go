@@ -28,12 +28,12 @@ func main() {
   db, err := sql.Open("postgres", connString)
 
   if err != nil {
-  	panic(err)
+    panic(err)
   }
   err = db.Ping()
 
   if err != nil {
-  	panic(err)
+    panic(err)
   }
 
   InitStore(&dbStore{db: db})
