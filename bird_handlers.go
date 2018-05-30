@@ -35,18 +35,18 @@ func createBirdHandler(w http.ResponseWriter, r *http.Request) {
 
   if err != nil {
     fmt.Println(fmt.Errorf("Error: %v", err))
-		w.WriteHeader(http.StatusInternalServerError)
-		return
+    w.WriteHeader(http.StatusInternalServerError)
+    return
   }
 
   bird.Species = r.Form.Get("species")
-	bird.Description = r.Form.Get("description")
+  bird.Description = r.Form.Get("description")
 
   err = store.CreateBird(&bird)
   if err != nil {
     fmt.Println(err)
   }
-  
+
   http.Redirect(w, r, "/assets/", http.StatusFound)
 
 }
