@@ -24,23 +24,23 @@ func newRouter() *mux.Router {
 }
 func main() {
   fmt.Println("Starting server...")
-	connString := "postgres://jduphbzynbfuch:0dc67026b814a1156e0854d22222557848e675929fa4b72c8716a63863751bab@ec2-23-23-130-158.compute-1.amazonaws.com:5432/dcomiopimevuq7"
-	db, err := sql.Open("postgres", connString)
+  connString := "postgres://jduphbzynbfuch:0dc67026b814a1156e0854d22222557848e675929fa4b72c8716a63863751bab@ec2-23-23-130-158.compute-1.amazonaws.com:5432/dcomiopimevuq7"
+  db, err := sql.Open("postgres", connString)
 
-	if err != nil {
-		panic(err)
-	}
-	err = db.Ping()
+  if err != nil {
+  	panic(err)
+  }
+  err = db.Ping()
 
-	if err != nil {
-		panic(err)
-	}
+  if err != nil {
+  	panic(err)
+  }
 
-	InitStore(&dbStore{db: db})
+  InitStore(&dbStore{db: db})
 
-	r := newRouter()
-	fmt.Println("Serving on port 8080")
-	http.ListenAndServe(":8080", r)
+  r := newRouter()
+  fmt.Println("Serving on port 8080")
+  http.ListenAndServe(":8080", r)
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
